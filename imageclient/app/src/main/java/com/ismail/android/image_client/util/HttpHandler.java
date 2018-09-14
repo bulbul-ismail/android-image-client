@@ -53,7 +53,6 @@ public class HttpHandler {
             //   HttpsURLConnection  conn = (HttpsURLConnection ) url.openConnection();
             HttpURLConnection  conn = (HttpURLConnection ) url.openConnection();
             conn.setRequestMethod("GET");
-            //Log.d("qwqw",""+timeoutValue);
             conn.setConnectTimeout(timeoutValue);
             conn.setReadTimeout(timeoutValue);
             // read the response
@@ -125,7 +124,6 @@ public class HttpHandler {
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, String res) {
                                     // called when response HTTP status is "200 OK"
-                                    //        Log.d("serverResponse",res);
                                 }
 
                                 @Override

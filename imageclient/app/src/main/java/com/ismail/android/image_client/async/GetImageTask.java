@@ -19,10 +19,12 @@ import java.io.UnsupportedEncodingException;
 public class GetImageTask extends AsyncTask {
 
     private Context context;
+    private String imageName;
     private byte[] imageData=null;
 
-    public GetImageTask(Context context) {
+    public GetImageTask(Context context, String imageName) {
         this.context = context;
+        this.imageName = imageName;
     }
 
 
@@ -30,9 +32,11 @@ public class GetImageTask extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
 
         HttpHandler handler = new HttpHandler(context);
-        String encodedImage = handler.makeServiceCall("http://127.0.0.1:8390/images");
+        String encodedImage = handler.makeServiceCall("http://192.168.1.100:8390/api/images/"+this.imageName);
 
-        if(null != encodedImage)imageData = Base64.decode(encodedImage,Base64.NO_WRAP);
+        if(null != encodedImage){
+            imageData = Base64.decode(encodedImage,Base64.NO_WRAP);
+        }
 
 
 
